@@ -1,0 +1,16 @@
+.container {
+	position: relative;
+  padding: 40px;
+  color: #333;
+  background: #419be0;
+}
+
+.focus {
+  box-sizing: border-box;
+  border: 3px solid red;
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  top: 40px;
+  left: 40px;
+}
