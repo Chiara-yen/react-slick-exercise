@@ -9,6 +9,9 @@ const KeyMap = {
   down: 40,
 };
 
+const CarouselNames = [ 'slider', 'slider2', 'slider3' ];
+const MaxIndex = CarouselNames.length - 1;
+
 const makefakeData = (name) => Array(8).fill(1).map((it, i) => {
   return {
     id: i,
@@ -21,49 +24,38 @@ export default class ReactSlickDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFirstLine: true,
-      isSecondLine: false,
-    }
-    this.settings = {
-      infinite: true,
-      speed: 150,
-      slidesToShow: 8,
-      arrows: false,
-      useCSS: true,
+      isActived: CarouselNames[0],
     }
   }
 
   componentDidMount() {
     const focusBox = document.getElementById('focus-box');
     document.addEventListener('keydown', (e) => {
-      const { isFirstLine, isSecondLine } = this.state;
 
       switch (e.keyCode) {
         case KeyMap.left:
-          isFirstLine && !isSecondLine ? this.slider.slickPrev() : this.slider2.slickPrev();
+          this[this.state.isActived].slickPrev();
           break;
 
         case KeyMap.right:
-          isFirstLine && !isSecondLine ? this.slider.slickNext() : this.slider2.slickNext();
+          this[this.state.isActived].slickNext();
           break;
 
         case KeyMap.up:
-          if (focusBox.classList.contains('second')) {
-            focusBox.classList.remove('second');
-          }
+          const currIndexUp = CarouselNames.findIndex(name => name === this.state.isActived);
+          const nextIndexUp = currIndexUp - 1 < 0 ? 0 : currIndexUp - 1;
+          focusBox.classList = `focus ${CarouselNames[nextIndexUp]}`;
           this.setState({
-            isFirstLine: true,
-            isSecondLine: false,
+            isActived: CarouselNames[nextIndexUp],
           })
           break;
 
         case KeyMap.down:
-          if (!focusBox.classList.contains('second')) {
-            focusBox.classList.add('second');
-          }
+          const currIndexDown = CarouselNames.findIndex(name => name === this.state.isActived);
+          const nextIndexDown = currIndexDown + 1 > MaxIndex ? MaxIndex : currIndexDown + 1;
+          focusBox.classList = `focus ${CarouselNames[nextIndexDown]}`;
           this.setState({
-            isFirstLine: false,
-            isSecondLine: true,
+            isActived: CarouselNames[nextIndexDown],
           })
           break;
 
@@ -77,6 +69,7 @@ export default class ReactSlickDemo extends Component {
       <div className='container'>
         <Carousel referance={n => this.slider = n} slides={makefakeData('slider')} />
         <Carousel referance={n => this.slider2 = n} slides={makefakeData('slider2')} />
+        <Carousel referance={n => this.slider3 = n} slides={makefakeData('slider3')} />
         <div id="focus-box" className='focus' />
       </div>
     );

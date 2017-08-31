@@ -1,7 +1,7 @@
 .container {
 	position: relative;
   color: #333;
-  background: #419be0;
+  background: cornflowerblue;
 }
 
 .slider-bar {
@@ -17,6 +17,18 @@
   left: 20px;
 }
 
-.focus.second {
+.focus.slider {
+  top: 20px;
+}
+
+.focus.slider2 {
   top: 260px;
+}
+
+.focus.slider3 {
+  top: 500px;
+}
+
+.focus.slider4 {
+  top: 740px;
 }
