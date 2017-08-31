@@ -1,16 +1,22 @@
 .container {
 	position: relative;
-  padding: 40px;
   color: #333;
   background: #419be0;
 }
 
+.slider-bar {
+  padding: 20px;
+}
+
 .focus {
-  box-sizing: border-box;
-  border: 3px solid red;
   position: absolute;
-  width: 400px;
+  border: 3px solid red;
+  width: 200px;
   height: 200px;
-  top: 40px;
-  left: 40px;
+  top: 20px;
+  left: 20px;
+}
+
+.focus.second {
+  top: 260px;
 }
