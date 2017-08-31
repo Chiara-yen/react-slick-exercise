@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
 import './ReactSlickDemo.css';
+import Carousel from './Carousel';
 
 const KeyMap = {
   left: 37,
@@ -8,6 +8,14 @@ const KeyMap = {
   right: 39,
   down: 40,
 };
+
+const makefakeData = (name) => Array(8).fill(1).map((it, i) => {
+  return {
+    id: i,
+    src: 'http://placekitten.com/g/200/200',
+    alt: `${name}_${i + 1}`,
+  };
+})
 
 export default class ReactSlickDemo extends Component {
   constructor(props) {
@@ -67,26 +75,8 @@ export default class ReactSlickDemo extends Component {
   render() {
     return (
       <div className='container'>
-        <Slider
-          {...this.settings}
-          ref={n => this.slider = n }
-          className="slider-bar"
-        >
-          <div><img src='http://placekitten.com/g/200/200' alt="1" /></div>
-          <div><img src='http://placekitten.com/g/200/200' alt="2" /></div>
-          <div><img src='http://placekitten.com/g/200/200' alt="3" /></div>
-          <div><img src='http://placekitten.com/g/200/200' alt="4" /></div>
-        </Slider>
-        <Slider
-          {...this.settings}
-          ref={n => this.slider2 = n }
-          className="slider-bar"
-        >
-          <div><img src='http://placekitten.com/g/200/200' alt="1" /></div>
-          <div><img src='http://placekitten.com/g/200/200' alt="2" /></div>
-          <div><img src='http://placekitten.com/g/200/200' alt="3" /></div>
-          <div><img src='http://placekitten.com/g/200/200' alt="4" /></div>
-        </Slider>
+        <Carousel referance={n => this.slider = n} slides={makefakeData('slider')} />
+        <Carousel referance={n => this.slider2 = n} slides={makefakeData('slider2')} />
         <div id="focus-box" className='focus' />
       </div>
     );
