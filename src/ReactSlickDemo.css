@@ -1,7 +1,7 @@
 .container {
 	position: relative;
   color: #333;
-  background: cornflowerblue;
+  background: aliceblue;
 }
 
 .slider-bar {
@@ -10,7 +10,7 @@
 
 .focus {
   position: absolute;
-  border: 3px solid red;
+  border: 3px solid tomato;
   width: 200px;
   height: 200px;
   top: 20px;

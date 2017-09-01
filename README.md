@@ -1,4 +1,4 @@
-# React Slick Exercise
+# [React Slick Exercise](https://chiara-yen.github.io/react-slick-exercise)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
