@@ -65,12 +65,13 @@ export default class ReactSlickDemo extends Component {
   }
 
   render() {
+    const index = CarouselNames.findIndex(name => name === this.state.isActived);
     return (
-      <div className='container'>
+      <div className='container' style={{ top: -(index * 240) }}>
         <Carousel referance={n => this.slider = n} slides={makefakeData('slider')} />
         <Carousel referance={n => this.slider2 = n} slides={makefakeData('slider2')} />
         <Carousel referance={n => this.slider3 = n} slides={makefakeData('slider3')} />
-        <div id="focus-box" className='focus' />
+        <div id="focus-box" className='focus' style={{ top: index * 240 + 20 }} />
       </div>
     );
   }
