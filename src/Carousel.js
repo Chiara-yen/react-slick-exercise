@@ -27,7 +27,7 @@ export default class Carousel extends Component {
     return (
       <Slider
         {...this.settings}
-        ref={this.props.referance}
+        ref={this.props.reference}
         className="slider-bar"
       >
         {this.state.slides.map((it, index) =>
